@@ -1,0 +1,15 @@
+{
+  "name": "npm-request-json",
+  "version": "1.0.0",
+  "description": "request npm package return json description information",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "noyobo<noyobo@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.85.0",
+    "semver": "^5.5.0"
+  }
+}
