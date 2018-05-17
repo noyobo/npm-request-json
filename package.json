@@ -1,6 +1,6 @@
 {
   "name": "npm-request-json",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "request npm package return json description information",
   "main": "index.js",
   "scripts": {
