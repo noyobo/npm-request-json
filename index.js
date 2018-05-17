@@ -26,10 +26,10 @@ module.exports = function npmRequest({
         }
 
         if (semver.valid(version)) {
-          try {
-            const result = json.versions[version];
+          const result = json.versions[version];
+          if (result) {
             resolve(result);
-          } catch (e) {
+          } else {
             reject(
               new Error('Can not found version ' + version + ' of ' + name),
             );

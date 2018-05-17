@@ -6,10 +6,19 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "noyobo<noyobo@gmail.com>",
+  "author": "noyobo <noyobo@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "request": "^2.85.0",
     "semver": "^5.5.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noyobo/npm-request-json.git"
+  },
+  "bugs": {
+    "url": "https://github.com/noyobo/npm-request-json/issues"
+  },
+  "homepage": "https://github.com/noyobo/npm-request-json#readme"
 }
