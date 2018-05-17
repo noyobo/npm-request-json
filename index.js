@@ -27,7 +27,7 @@ module.exports = function npmRequest({
 
         if (semver.valid(version)) {
           if (pkgData && pkgData.versions && pkgData.versions[version]) {
-            resolve(result);
+            resolve(pkgData.versions[version]);
           } else {
             reject(
               new Error('Can not found version ' + version + ' of ' + name),
