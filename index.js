@@ -17,17 +17,16 @@ module.exports = function npmRequest({
   const registryUrl = registry || 'https://registry.npmjs.com';
   const pkgUrl = `${registryUrl}/${name.replace(/\//g, '%2f')}`;
   return new Promise((resolve, reject) => {
-    request({ url: pkgUrl, json: true }, (err, response, json) => {
-      if (err || !json) {
+    request({ url: pkgUrl, json: true }, (err, response, pkgData) => {
+      if (err || !pkgData) {
         reject(err || new Error(JSON.stringify(response.body)));
       } else {
         if (!semver.valid(version)) {
-          version = json['dist-tags'][version];
+          version = pkgData['dist-tags'][version];
         }
 
         if (semver.valid(version)) {
-          const result = json.versions[version];
-          if (result) {
+          if (pkgData && pkgData.versions && pkgData.versions[version]) {
             resolve(result);
           } else {
             reject(
