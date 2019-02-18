@@ -12,7 +12,9 @@
     "request": "^2.85.0",
     "semver": "^5.5.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "extend": ">=3.0.2"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/noyobo/npm-request-json.git"
