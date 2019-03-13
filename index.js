@@ -9,16 +9,13 @@ const semver = require('semver');
  * @return promise
  *
  */
-module.exports = function npmRequest({
-  name,
-  version = 'latest',
-  registry = 'https://registry.npmjs.com',
-}) {
+module.exports = function npmRequest({ name, version = 'latest', registry = 'https://registry.npmjs.com' }) {
   const registryUrl = registry || 'https://registry.npmjs.com';
   const pkgUrl = `${registryUrl}/${name.replace(/\//g, '%2f')}`;
+
   return new Promise((resolve, reject) => {
     request({ url: pkgUrl, json: true }, (err, response, pkgData) => {
-      if (err || !pkgData) {
+      if (err || !pkgData || pkgData.error || !pkgData['dist-tags']) {
         reject(err || new Error(JSON.stringify(response.body)));
       } else {
         if (!semver.valid(version)) {
@@ -29,9 +26,7 @@ module.exports = function npmRequest({
           if (pkgData && pkgData.versions && pkgData.versions[version]) {
             resolve(pkgData.versions[version]);
           } else {
-            reject(
-              new Error('Can not found version ' + version + ' of ' + name),
-            );
+            reject(new Error('Can not found version ' + version + ' of ' + name));
           }
         } else {
           reject(new Error('Can not found version ' + version + ' of ' + name));
